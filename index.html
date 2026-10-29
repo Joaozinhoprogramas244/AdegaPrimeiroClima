@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#10110f">
+
+  <title>Adega Prime | Bebidas & Conveniência</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div id="ageGate" class="age-gate">
+
+    <div class="age-card">
+
+      <div class="brand-icon">AP</div>
+
+      <p class="eyebrow">BEM-VINDO À</p>
+
+      <h1>ADEGA <span>PRIME</span></h1>
+
+      <p>Um espaço para descobrir suas bebidas favoritas.</p>
+
+      <h3>Você tem 18 anos ou mais?</h3>
+
+      <div class="age-actions">
+
+        <button id="confirmAge" class="btn-primary">Sim, tenho 18+</button>
+
+        <button id="denyAge" class="btn-outline">Não tenho</button>
+
+      </div>
+
+      <small>Venda e entrega de bebidas alcoólicas proibidas para menores de 18 anos.</small>
+
+    </div>
+
+  </div>
+
+  <header class="topbar">
+
+    <a href="#" class="logo">ADEGA <span>PRIME.</span></a>
+
+    <nav>
+
+      <a href="#inicio">Início</a>
+
+      <a href="#catalogo">Bebidas</a>
+
+      <a href="#ofertas">Ofertas</a>
+
+    </nav>
+
+    <div class="header-actions">
+
+      <button id="adminButton" class="btn-outline">Painel do dono</button>
+
+      <button id="cartButton" class="cart-button">
+
+        Sacola <span id="cartCount">0</span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+
+      <div class="hero-content">
+
+        <span class="eyebrow">SUA ADEGA, SEU ESTILO</span>
+
+        <h1>O brinde perfeito<br>começa <span>aqui.</span></h1>
+
+        <p>Encontre suas bebidas favoritas, descubra novidades e confira nossas ofertas.</p>
+
+        <a href="#catalogo" class="btn-primary">Explorar bebidas ↗</a>
+
+        <div class="hero-stats">
+
+          <div><strong>01</strong><small>Escolha</small></div>
+
+          <div><strong>02</strong><small>Adicione à sacola</small></div>
+
+          <div><strong>03</strong><small>Finalize seu pedido</small></div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-glow"></div>
+
+        <div class="hero-bottle">🍾</div>
+
+        <div class="hero-label">SELEÇÃO<br>ESPECIAL</div>
+
+        <div class="floating-tag">QUALIDADE & SELEÇÃO</div>
+
+      </div>
+
+    </section>
+
+    <section class="benefits">
+
+      <div>✦ <span>Catálogo organizado</span></div>
+
+      <div>◷ <span>Consulte horários</span></div>
+
+      <div>✓ <span>Pedido simplificado</span></div>
+
+    </section>
+
+    <section class="catalog section" id="catalogo">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="eyebrow">ENCONTRE O QUE PROCURA</span>
+
+          <h2>Nossas bebidas<span>.</span></h2>
+
+        </div>
+
+        <span id="productTotal" class="muted"></span>
+
+      </div>
+
+      <div class="search-row">
+
+        <input id="searchInput" type="search"
+
+          placeholder="Buscar bebida, marca ou categoria...">
+
+        <select id="sortSelect" aria-label="Ordenar produtos">
+
+          <option value="featured">Em destaque</option>
+
+          <option value="priceAsc">Menor preço</option>
+
+          <option value="priceDesc">Maior preço</option>
+
+          <option value="name">Nome A–Z</option>
+
+        </select>
+
+      </div>
+
+      <div id="categoryFilters" class="category-filters"></div>
+
+      <div id="productGrid" class="product-grid"></div>
+
+      <p id="emptyProducts" class="empty hidden">Nenhum produto encontrado.</p>
+
+    </section>
+
+    <section class="promo" id="ofertas">
+
+      <div>
+
+        <span class="eyebrow">SELEÇÃO DA ADEGA</span>
+
+        <h2>Monte sua seleção<br>para a ocasião.</h2>
+
+        <p>Explore os produtos e confira os preços disponíveis.</p>
+
+        <a href="#catalogo" class="btn-primary">Ver catálogo ↗</a>
+
+      </div>
+
+      <div class="promo-icon">🥂</div>
+
+    </section>
+
+    <section id="adminPanel" class="section admin-panel hidden">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="eyebrow">GESTÃO DO NEGÓCIO</span>
+
+          <h2>Painel administrativo<span>.</span></h2>
+
+        </div>
+
+        <button id="closeAdmin" class="btn-outline">Fechar</button>
+
+      </div>
+
+      <div class="notice">
+
+        Demonstração local: os dados são salvos somente neste navegador.
+
+        Este painel ainda não possui autenticação segura.
+
+      </div>
+
+      <div class="dashboard">
+
+        <div class="metric"><span>Produtos cadastrados</span><strong id="metricProducts">0</strong></div>
+
+        <div class="metric"><span>Unidades em estoque</span><strong id="metricStock">0</strong></div>
+
+        <div class="metric"><span>Itens na sacola</span><strong id="metricCart">0</strong></div>
+
+      </div>
+
+      <h3>Cadastrar produto</h3>
+
+      <form id="productForm" class="product-form">
+
+        <label>Nome do produto
+
+          <input id="newName" required maxlength="80" placeholder="Ex.: Cerveja Lager 350 ml">
+
+        </label>
+
+        <label>Categoria
+
+          <select id="newCategory" required>
+
+            <option value="Cervejas">Cervejas</option>
+
+            <option value="Vinhos">Vinhos</option>
+
+            <option value="Destilados">Destilados</option>
+
+            <option value="Energéticos">Energéticos</option>
+
+            <option value="Sem álcool">Sem álcool</option>
+
+            <option value="Outros">Outros</option>
+
+          </select>
+
+        </label>
+
+        <label>Preço de venda (R$)
+
+          <input id="newPrice" type="number" min="0.01" max="100000" step="0.01" required>
+
+        </label>
+
+        <label>Quantidade em estoque
+
+          <input id="newStock" type="number" min="0" max="100000" step="1" required>
+
+        </label>
+
+        <label>Emoji do produto
+
+          <input id="newEmoji" maxlength="8" value="🍹">
+
+        </label>
+
+        <button class="btn-primary" type="submit">Cadastrar produto</button>
+
+      </form>
+
+      <h3>Estoque de produtos</h3>
+
+      <div id="adminProducts" class="admin-products"></div>
+
+      <h3>Pedidos desta demonstração</h3>
+
+      <div id="orderHistory" class="order-history"></div>
+
+      <button id="exportProducts" class="btn-outline">Exportar produtos em JSON</button>
+
+    </section>
+
+  </main>
+
+  <div id="cartOverlay" class="overlay hidden">
+
+    <aside class="drawer">
+
+      <div class="drawer-heading">
+
+        <h2>Sua sacola</h2>
+
+        <button id="closeCart" class="icon-button" aria-label="Fechar sacola">✕</button>
+
+      </div>
+
+      <div id="cartItems"></div>
+
+      <div class="cart-total">
+
+        <span>Total estimado</span>
+
+        <strong id="cartTotal">R$ 0,00</strong>
+
+      </div>
+
+      <p class="muted">A disponibilidade e o valor final devem ser confirmados pela loja.</p>
+
+      <button id="checkoutButton" class="btn-primary full-width">Solicitar pedido</button>
+
+      <p id="checkoutMessage" class="muted"></p>
+
+    </aside>
+
+  </div>
+
+  <footer>
+
+    <a href="#" class="logo">ADEGA <span>PRIME.</span></a>
+
+    <p>Uma experiência moderna para sua adega.</p>
+
+    <small>Venda de bebidas alcoólicas proibida para menores de 18 anos.</small>
+
+    <small>© <span id="year"></span> Adega Prime. Projeto demonstrativo.</small>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
